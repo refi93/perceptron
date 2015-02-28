@@ -18,7 +18,7 @@ public class ContinuousPerceptron extends DiscretePerceptron{
     }
     
     @Override
-    protected double activationFunction(double y){
+    public double activationFunction(double y){
         return 1.0/(1.0 + Math.pow(Math.E, -y)); // sigmoid function
     }
 

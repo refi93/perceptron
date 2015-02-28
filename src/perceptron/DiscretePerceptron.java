@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author raf
  */
-public class DiscretePerceptron {
+public class DiscretePerceptron implements Perceptron{
     double alpha; // rychlost ucenia;
     int inputSize, dataCount;
     ArrayList<ArrayList<Double> > data;
@@ -35,11 +35,21 @@ public class DiscretePerceptron {
         }
     }
     
-    protected double activationFunction(double y){
+    /**
+     *
+     * @param y
+     * @return
+     */
+    @Override
+    public double activationFunction(double y){
         return (y > 0) ? 1.0 : 0.0;
     }
     
-    protected double iteration(){
+    /**
+     *
+     * @return
+     */
+    public double iteration(){
         java.util.Collections.shuffle(data);
         double absoluteError = 0.0; // celkova chyba pocas vypoctu
         for(int i = 0; i < dataCount; i++){

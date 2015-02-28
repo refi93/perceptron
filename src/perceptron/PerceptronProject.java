@@ -46,11 +46,11 @@ public class PerceptronProject {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        ArrayList<ArrayList<Double> > data = loadCsvData("hard.csv");
+        ArrayList<ArrayList<Double> > data = loadCsvData("or.csv");
         //DiscretePerceptron myPerceptron = new DiscretePerceptron(data, 0.5);
         //myPerceptron.learn();
         
-        ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.5);
+        ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.8);
         myContPerceptron.learn(0.1);
     }
     
