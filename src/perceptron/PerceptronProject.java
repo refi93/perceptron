@@ -15,7 +15,7 @@ import java.util.ArrayList;
  *
  * @author raf
  */
-public class Perceptron {
+public class PerceptronProject {
 
     /**
      * @param csvFile
@@ -47,8 +47,11 @@ public class Perceptron {
      */
     public static void main(String[] args) throws IOException {
         ArrayList<ArrayList<Double> > data = loadCsvData("hard.csv");
-        SimplePerceptron myPerceptron = new SimplePerceptron(data, 0.5);
-        myPerceptron.learn();
+        //DiscretePerceptron myPerceptron = new DiscretePerceptron(data, 0.5);
+        //myPerceptron.learn();
+        
+        ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.5);
+        myContPerceptron.learn(0.1);
     }
     
 }

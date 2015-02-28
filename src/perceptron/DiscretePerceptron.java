@@ -11,13 +11,13 @@ import java.util.ArrayList;
  *
  * @author raf
  */
-public class SimplePerceptron {
+public class DiscretePerceptron {
     double alpha; // rychlost ucenia;
     int inputSize, dataCount;
     ArrayList<ArrayList<Double> > data;
     ArrayList<Double> weights; // posledny prvok weights je nas threshold
     
-    public SimplePerceptron(ArrayList<ArrayList<Double> > data, double alpha){
+    public DiscretePerceptron(ArrayList<ArrayList<Double> > data, double alpha){
         // nastavime si pocet dat a velkost vstupu
         this.dataCount = data.size();
         if (dataCount == 0){
@@ -35,17 +35,19 @@ public class SimplePerceptron {
         }
     }
     
-    private double iteration(){
+    protected double activationFunction(double y){
+        return (y > 0) ? 1.0 : 0.0;
+    }
+    
+    protected double iteration(){
         java.util.Collections.shuffle(data);
         double absoluteError = 0.0; // celkova chyba pocas vypoctu
         for(int i = 0; i < dataCount; i++){
             ArrayList<Double> x = data.get(i);
-            Double expectedResult = x.get(x.size() - 1);
+            double expectedResult = x.get(x.size() - 1);
             x.set(x.size() - 1, -1.0); // lebo na poslednej pozicii si pamatame threshold, potom ho treba obnovit
             
-            x.set(x.size() - 1, -1.0); // vyuzijeme posledne policko x, aby sme pracovali s thresholdom
-            
-            Double result = (Helpers.crossProduct(x, weights) > 0) ? 1.0 : 0.0; // prezenieme thresholdom
+            double result = activationFunction(Helpers.crossProduct(x, weights)); // prezenieme thresholdom            
             double err = 0.5 * Math.pow(expectedResult - result, 2); // updatujeme chybu
             absoluteError += err;
             
@@ -58,9 +60,9 @@ public class SimplePerceptron {
         return absoluteError;
     }
     
-    public void learn(){
+    public void learn(double tollerance){
         int it = 0;
-        while(iteration() > 0){
+        while(iteration() > tollerance){
             System.out.println("iteration " + it++);
         };
     }
