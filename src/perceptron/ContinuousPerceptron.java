@@ -25,14 +25,16 @@ public class ContinuousPerceptron extends DiscretePerceptron{
     /**
      *
      * @param tollerance
+     * @return 
      */
     @Override
-    public void learn(double tollerance){
+    public int learn(double tollerance){
         int it = 0;
         double err;
         do{
             err = iteration();
-            System.out.println("iteration " + it++ + ", error: " + err);
+            it++;
         }while(err > tollerance);
+        return it;
     }
 }

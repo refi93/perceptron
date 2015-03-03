@@ -1,0 +1,2 @@
+octave --silent --persist perceptron.m 
+

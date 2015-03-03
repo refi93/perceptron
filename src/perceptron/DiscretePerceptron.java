@@ -70,10 +70,12 @@ public class DiscretePerceptron implements Perceptron{
         return absoluteError;
     }
     
-    public void learn(double tollerance){
+    @Override
+    public int learn(double tollerance){
         int it = 0;
         while(iteration() > tollerance){
             System.out.println("iteration " + it++);
-        };
+        }
+        return it;
     }
 }

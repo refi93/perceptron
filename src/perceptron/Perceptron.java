@@ -13,5 +13,5 @@ import java.util.ArrayList;
  */
 public interface Perceptron {    
     double activationFunction(double y);
-    void learn(double tollerance);
+    int learn(double tollerance);
 }

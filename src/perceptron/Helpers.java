@@ -51,4 +51,12 @@ public class Helpers {
         
         return ret;
     }
+    
+    static double average(ArrayList<Double> numbers){
+        double sum = 0;
+        for (double x : numbers){
+            sum += x;
+        }
+        return sum / numbers.size();
+    }
 }
