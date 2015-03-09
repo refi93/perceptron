@@ -52,11 +52,11 @@ public class PerceptronProject {
         String alphas = "alphas = [0,";
         String avgIterCounts = "values = [Inf(1),";
         for (int i = 1; i <= 20; i++) {
-            alphas += Math.round(i * 0.2 * 100) / 100.0 + ",";
+            alphas += Math.round(i * 0.05 * 100) / 100.0 + ",";
             ArrayList<Double> iterationCounts = new ArrayList<>();
             for (int j = 0; j < 5; j++){
                 ArrayList<ArrayList<Double> > data = loadCsvData("or3.csv");
-                ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.2 * i);
+                ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.05 * i);
                 double iterCount = myContPerceptron.learn(0.1);
                 iterationCounts.add(iterCount);
             }
@@ -67,9 +67,9 @@ public class PerceptronProject {
         System.out.println(alphas);
         System.out.println(avgIterCounts);
         
-        ArrayList<ArrayList<Double> > data = loadCsvData("and3.csv");
-        ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.8);
-        double iterCount = myContPerceptron.learn(0.1);
+        ArrayList<ArrayList<Double> > data = loadCsvData("or3.csv");
+        ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.9);
+        double iterCount = myContPerceptron.learnExplicit(0.1);
         System.out.println(myContPerceptron.weights);
     }
     

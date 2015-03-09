@@ -59,4 +59,12 @@ public class Helpers {
         }
         return sum / numbers.size();
     }
+    
+    static double sigmoid(double y){
+        return 1.0/(1.0 + Math.pow(Math.E, -y));
+    }
+    
+    static double sigmoidDerivative(double y){
+        return sigmoid(y) * (1 - sigmoid(y));
+    }
 }

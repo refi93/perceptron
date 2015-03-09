@@ -11,7 +11,9 @@ import java.util.ArrayList;
  *
  * @author raf
  */
-public interface Perceptron {    
+public interface Perceptron {   
+    
+    int iter = 0;
     double activationFunction(double y);
     int learn(double tollerance);
 }
