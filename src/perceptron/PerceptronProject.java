@@ -54,8 +54,8 @@ public class PerceptronProject {
         for (int i = 1; i <= 20; i++) {
             alphas += Math.round(i * 0.05 * 100) / 100.0 + ",";
             ArrayList<Double> iterationCounts = new ArrayList<>();
-            for (int j = 0; j < 5; j++){
-                ArrayList<ArrayList<Double> > data = loadCsvData("or3.csv");
+            for (int j = 0; j < 100; j++){
+                ArrayList<ArrayList<Double> > data = loadCsvData("and3.csv");
                 ContinuousPerceptron myContPerceptron = new ContinuousPerceptron(data, 0.05 * i);
                 double iterCount = myContPerceptron.learn(0.1);
                 iterationCounts.add(iterCount);

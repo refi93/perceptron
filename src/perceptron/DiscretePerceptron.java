@@ -74,10 +74,10 @@ public class DiscretePerceptron implements Perceptron{
             double expectedResult = x.get(x.size() - 1);
             
             
-            x.set(x.size() - 1, -1.0); // lebo na poslednej pozicii si pamatame threshold, potom ho treba obnovit
+            x.set(x.size() - 1, -1.0); // lebo na poslednej pozicii vo vahach si pamatame threshold, potom ho treba obnovit
             
             double result = activationFunction(Helpers.crossProduct(x, weights)); // prezenieme thresholdom            
-            double err = 0.5 * Math.pow(expectedResult - result, 2); // updatujeme chybu
+            double err = 0.5 * Math.pow(expectedResult - (result > 0.5 ? 1 : 0), 2); // updatujeme chybu
             absoluteError += err;
             
             output.append(result + "," + Helpers.crossProduct(x, weights) + "," + err);
